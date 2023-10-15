@@ -82,7 +82,7 @@
     </p>
 
     <p> <!-- Add citation in this paragraph  -->
-        To illustrate, consider a scenario where a machine learning model was fine-tuned to classify green apples and oranges. Utilizing the fast.ai<sup><a href="#References"></a></sup> library, a ResNet18 model was deployed and fed a myriad of images containing these fruits. However, when exposed to images of other objects that were green—such as frogs, green tennis balls, and even green oranges—the model overwhelmingly classified these as 'green apples' with high confidence. You can see the examples as follows:
+        To illustrate, consider a scenario where a machine learning model was fine-tuned to classify green apples and oranges. Utilizing the fast.ai<d-cite key="howard2018fastai"></d-cite> library, a ResNet18 model was deployed and fed a myriad of images containing these fruits. However, when exposed to images of other objects that were green—such as frogs, green tennis balls, and even green oranges—the model overwhelmingly classified these as 'green apples' with high confidence. You can see the examples as follows:
     </p>
 
     <div>
@@ -137,17 +137,18 @@
     </p>
 
     <p>
-        For any test sample \((\hat{X}_{n+1}, \hat{Y}_{n+1})\), the calculated uncertainty bands will satisfy the following property:
+        <!-- For any test sample \((\hat{X}_{n+1}, \hat{Y}_{n+1})\), the calculated uncertainty bands will satisfy the following property: -->
+        For any test sample <d-math>(\hat{X}_{n+1}, \hat{Y}_{n+1})</d-math>, the calculated uncertainty bands will satisfy the following property:
     </p>
 
     <p align = "center">
-        \[
-        \quad P(\hat{Y}_{n+1} \in \hat{C}(X_{n+1})) \geq 1 - \alpha
-        \]
+        <!-- \[ \quad P(\hat{Y}_{n+1} \in \hat{C}(X_{n+1})) \geq 1 - \alpha \] -->
+        <d-math>\quad P(\hat{Y}_{n+1} \in \hat{C}(X_{n+1})) \geq 1 - \alpha</d-math>
     </p>
 
     <p>
-        This means that with probability at least \(1 - \alpha\), the computed uncertainty band \(\hat{\mathcal{X}}_{n+1}\) and \(\hat{C}(x_{n+1})\) around the point estimate \(\hat{x}_{n+1}\) and \(\hat{y}_{n+1}\) will contain the true unknown value \(x_{n+1}\) and \(y_{n+1}\). Here, \(\alpha\) is a user-chosen error rate.
+        <!-- This means that with probability at least \(1 - \alpha\), the computed uncertainty band \(\hat{\mathcal{X}}_{n+1}\) and \(\hat{C}(x_{n+1})\) around the point estimate \(\hat{x}_{n+1}\) and \(\hat{y}_{n+1}\) will contain the true unknown value \(x_{n+1}\) and \(y_{n+1}\). Here, \(\alpha\) is a user-chosen error rate. -->
+        This means that with probability at least <d-math>1 - \alpha</d-math>, the computed uncertainty band <d-math>\hat{\mathcal{X}}_{n+1}</d-math> and <d-math>\hat{C}(x_{n+1})</d-math> around the point estimate <d-math>\hat{x}_{n+1}</d-math> and <d-math>\hat{y}_{n+1}</d-math> will contain the true unknown value <d-math>x_{n+1}</d-math> and <d-math>y_{n+1}</d-math>. Here, <d-math>\alpha</d-math> is a user-chosen error rate.
         <br>
         This mathematical guarantee on prediction intervals makes it invaluable in mission-critical applications.
     </p>
@@ -191,9 +192,14 @@
         Model
     </h3>
 
-    <p>
+    <!-- <p>
         The model, which is a Multi Layer Perceptron (MLP), will be trained on the training data and used to generate predictions on the calibration data.<br>
         The calibration data is used to estimate the quantiles (\(q_{\text{val}}\)) for the prediction intervals. You can choose the number of calibration data points (\(n\)) using the slider below.
+    </p> -->
+
+    <p>
+        The model, which is a Multi Layer Perceptron (MLP), will be trained on the training data and used to generate predictions on the calibration data.<br>
+        The calibration data is used to estimate the quantiles <d-math>q_{\text{val}}</d-math> for the prediction intervals. You can choose the number of calibration data points <d-math>(n)</d-math>> using the slider below.
     </p>
 
     <div>
@@ -230,23 +236,29 @@
         </div>
     
         <p align = "center">
-            \[
-            s_i = |y_i - \hat{y}_i|
-            \]
+            <!-- \[ s_i = |y_i - \hat{y}_i| \] -->
+            <d-math>s_i = |y_i - \hat{y}_i|</d-math>
         </p>
     
-        <p>
+        <!-- <p>
             The score function \(s_i\) represents the absolute difference between the true output \(y_i\) and the model's predicted output \(\hat{y}_i\) for each calibration data point \(x_i\). It measures the discrepancy between the true values and their corresponding predictions, providing a measure of model fit to the calibration data.
-        </p>
+        </p> -->
     
         <p>
+            The score function <d-math>s_i</d-math>> represents the absolute difference between the true output <d-math>y_i</d-math> and the model's predicted output <d-math>\hat{y}_i</d-math> for each calibration data point <d-math>x_i</d-math>. It measures the discrepancy between the true values and their corresponding predictions, providing a measure of model fit to the calibration data.
+        </p>
+
+        <!-- <p>
             Use the below slider to choose the error rate \(\alpha\). With probability \(1 - \alpha\), our computed uncertainty band \(\hat{\mathcal{C}}(\hat{x}_{n+1})\) will contain the true value \(\hat{y}_{n+1}\).
+        </p> -->
+
+        <p>
+            Use the below slider to choose the error rate <d-math>\alpha</d-math>. With probability <d-math>1-\alpha</d-math>>, our computed uncertainty band <d-math>\hat{\mathcal{C}}(\hat{x}_{n+1})</d-math> will contain the true value <d-math>\hat{y}_{n+1}</d-math>.
         </p>
     
-
         <!-- Slider for alpha -->
         <div class="gif-slider">
-            <div align="center"> Value of \(\alpha\) :  <span id="alpha-slider-value">0.4<br></span></div>
+            <div align="center"> Value of <d-math>\alpha</d-math> :  <span id="alpha-slider-value">0.4<br></span></div>
             <div class="controls">
                 <!-- Left button for decreasing alpha -->
                 <div>
@@ -278,16 +290,23 @@
         </div>
     </div>
 
-    <p>
+    <!-- <p>
         We compute \(q_{\text{val}}\) by calculating the \(\lceil \frac{(n+1)(1-\alpha)}{n} \rceil\)th quantile of the conformity scores.
     </p>
     <p align="center">
         \(q_{\text{val}} = \) <span id = "regression_qval">0.3545</span>
+    </p> -->
+
+    <p>
+        We compute <d-math>q_{\text{val}}</d-math> by calculating the <d-math>\lceil \frac{(n+1)(1-\alpha)}{n} \rceil</d-math>th quantile of the conformity scores.
+    </p>
+    <p align="center">
+        <d-math>q_{\text{val}} = </d-math> <span id = "regression_qval">0.3545</span>
     </p>
 
     <p>
         The model predicts that the time for the Olympic gold medalist in 1946 would have been <span id = "predicted-time">3.28</span> minutes. 
-        With a significance level of \(\alpha = \) <span id="significance-level">0.40</span>, the uncertainty band calculated using conformal prediction ranges from <span id = "time-lower_bound">2.92</span> to <span id = "time-upper_bound">3.63</span> minutes. <br>
+        With a significance level of <d-math>\alpha = </d-math> <span id="significance-level">0.40</span>, the uncertainty band calculated using conformal prediction ranges from <span id = "time-lower_bound">2.92</span> to <span id = "time-upper_bound">3.63</span> minutes. <br>
         Therefore, based on this model, Alan Turing would have won the gold medal.
     </p>
 
@@ -300,11 +319,16 @@
     </p>
 
     <p align = "center">
-        \( \hat{C}(X_{n+1}) \subseteq \{1, \ldots, K\} \)
+        <!-- \( \hat{C}(X_{n+1}) \subseteq \{1, \ldots, K\} \) -->
+       <d-math> \hat{C}(X_{n+1}) \subseteq \{1, \ldots, K\} </d-math>
     </p>
 
-    <p>
+    <!-- <p>
         In this formalism, \( \hat{C}(X_{n+1}) \) is the prediction set corresponding to a new input \( \hat{X}_{n+1} \), and \( K \) signifies the total number of unique classes.
+    </p> -->
+
+    <p>
+        In this formalism, <d-math>\hat{C}(X_{n+1})</d-math> is the prediction set corresponding to a new input <d-math>\hat{X}_{n+1}</d-math>, and <d-math>K</d-math> signifies the total number of unique classes.
     </p>
 
     <p>
@@ -319,38 +343,45 @@
         The method of calculating conformity scores is a modelling decision. Here, we will use a simple method based on the softmax scores. The score is calculated by the following formula:
     </p>
 
-    <p>
-        \[ s_i = 1 - \hat{\pi}_{x_i}(y_i) \]
+    <p align="center">
+        <!-- \[ s_i = 1 - \hat{\pi}_{x_i}(y_i) \] -->
+        <d-math>s_i = 1 - \hat{\pi}_{x_i}(y_i)</d-math>
     </p>
 
-    <p>
+    <!-- <p>
         For a sample \((x_i, y_i)\) from the calibration set, where \(\hat{\pi}_{x_i}(y_i)\) represents the softmax score of the true class \((y_i)\), the sample score \(s_i\) is equal to \(1\) minus the softmax output of the true class. If the softmax value of the true class is low, it means that the model is uncertain. The score in such a case will be high.
+    </p> -->
+
+    <p>
+        For a sample <d-math>(x_i, y_i)</d-math> from the calibration set, where <d-math>\hat{\pi}_{x_i}(y_i)</d-math> represents the softmax score of the true class <d-math>y_i</d-math>, the sample score <d-math>s_i</d-math> is equal to <d-math>1</d-math> minus the softmax output of the true class. If the softmax value of the true class is low, it means that the model is uncertain. The score in such a case will be high.
     </p>
 
     <p>
-        After calculating the scores from the calibration set, we choose an error rate \(\alpha\). The probability that the prediction set contains the correct class will be approximately \(1 - \alpha\). If \(\alpha = 0.05\), then the probability that the prediction set contains the true class is \(0.95\).
+        After calculating the scores from the calibration set, we choose an error rate <d-msath>\alpha</d-math>. The probability that the prediction set contains the correct class will be approximately <d-math>1 - \alpha</d-math>. If <d-math>\alpha = 0.05</d-math>, then the probability that the prediction set contains the true class is <d-math>0.95</d-math>.
     </p>
 
     <p>
-        We will get the prediction set for a test sample \((\hat{x}_{n+1}, \hat{y}_{n+1})\) \((x_{n+1}, y_{n+1})\) by:
+        <!-- We will get the prediction set for a test sample \((\hat{x}_{n+1}, \hat{y}_{n+1})\) \((x_{n+1}, y_{n+1})\) by: -->
+        We will get the prediction set for a test sample <d-math>(\hat{x}_{n+1}, \hat{y}_{n+1})) ((x_{n+1}, y_{n+1})</d-math> by:
     </p>
-    <p>
-        \[
-        \hat{\mathcal{C}}(x_{n+1}) = \left\{ y' \in \mathcal{K} : \hat{\pi}_{x_{n+1}}(y') \geq 1 - q_{\text{val}} \right\}
-        \]
+    <p align="center">
+        <!-- \[\hat{\mathcal{C}}(x_{n+1}) = \left\{ y' \in \mathcal{K} : \hat{\pi}_{x_{n+1}}(y') \geq 1 - q_{\text{val}} \right\}\] -->
+        <d-math>\hat{\mathcal{C}}(x_{n+1}) = \left\{ y' \in \mathcal{K} : \hat{\pi}_{x_{n+1}}(y') \geq 1 - q_{\text{val}} \right\}</d-math>
+
     </p>
 
     <p>
-        The prediction set \(C\) consists of all the classes for which the softmax score is above a threshold value \(1 - q_{\text{val}}\). \(q_{\text{val}}\) is calculated as the \(\lceil \frac{(n+1)(1-\alpha)}{n} \rceil\)-th quantile of the scores from the calibration set.
+        The prediction set <d-math>C</d-math> consists of all the classes for which the softmax score is above a threshold value <d-math>1 - q_{\text{val}}</d-math>. <d-math>  q_{\text{val}}</d-math> is calculated as the <d-math>\lceil \frac{(n+1)(1-\alpha)}{n} \rceil</d-math>-th quantile of the scores from the calibration set.
     </p>
 
     <p align = "center">
-        \(q_{\text{val}} = \lceil \frac{(n+1)(1-\alpha)}{n} \rceil = \) <span id = "q_val">0.9200</span>
+        <!-- \(q_{\text{val}} = \lceil \frac{(n+1)(1-\alpha)}{n} \rceil = \) <span id = "q_val">0.9200</span> -->
+        <d-math>q_{\text{val}} = \lceil \frac{(n+1)(1-\alpha)}{n} \rceil = </d-math> <span id = "q_val">0.9200</span>
     </p>
 
     <div>
         <div class="gif-slider">
-            <div align="center"> Select a value for \(\alpha\) : <span id="c_alpha-slider-value">0.1<br></span></div>
+            <div align="center"> Select a value for <d-math>\alpha</d-math> : <span id="c_alpha-slider-value">0.1<br></span></div>
             <div class="controls">
                 <div>
                     <button onclick="c_changeAlpha(this.parentNode.parentNode, false)">
@@ -374,7 +405,7 @@
         </div>
     
         <p>
-            For this value of \(\alpha\), the threshold value \(1 - q_{\text{val}}\) is <span id="c_threshold-value">0.6468</span>.
+            For this value of <d-math>\alpha</d-math>, the threshold value <d-math>1 - q_{\text{val}}</d-math> is <span id="c_threshold-value">0.6468</span>.
         </p>
     
         <h3>
@@ -413,7 +444,7 @@
             <img src="images/Generated_Images/Classification_Prediction_0_for_0.1.png" id="c_image-display" style="width: 95%; height: auto;">
         </div> -->
         <div class="image-selector">
-            <div><ul><li>Select an Image from below: </li></ul><span id="c_image-selector-value"></span></div>
+            <div><ul><li>Select an Image from below: </li></ul><span id="c_image-selector-value" style = "display:none"> 0 </span></div>
 
             <div class="image-container">
                 <button onclick="c_changeImage(0)" class = "image-button">
@@ -461,7 +492,7 @@
 
     <p>
         <b>What does the average size mean?</b><br>
-        We observe that the average size of the prediction set decreases when value of alpha is increased. This is because of our method for computing conformity scores, where we only take into account the softmax scores of the correct class when calculating \(\hat{q}\). With increasing alpha, the softmax scores for the classes decreases and thus there are lesser scores above the threshold value.
+        We observe that the average size of the prediction set decreases when value of alpha is increased. This is because of our method for computing conformity scores, where we only take into account the softmax scores of the correct class when calculating <d-math>\hat{q}</d-math>. With increasing alpha, the softmax scores for the classes decreases and thus there are lesser scores above the threshold value.
     </p>
 
     <h1>
